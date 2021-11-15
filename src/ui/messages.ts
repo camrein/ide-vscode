@@ -19,6 +19,12 @@ export namespace Messages {
   export namespace Installation {
     export const Error = 'An error occurred during the installation of Dafny.';
     export const Outdated = 'Your Dafny installation is outdated: ';
+
+    export const DeprecatedMessage = 'Please update Dafny: Due to the recent growth of the Dafny extension, '
+      + 'we decided to move it to the new "dafny-lang" organization. Please switch to the new release to ensure '
+      + ' that you receive Dafny updates in the future.';
+    export const GetLatest = 'Get latest';
+    export const LatestMarketplace = 'https://marketplace.visualstudio.com/items?itemName=dafny-lang.ide-vscode';
   }
 
   export namespace Dotnet {
