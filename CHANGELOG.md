@@ -1,8 +1,12 @@
 # Release Notes
 
-## 2.0.2
+## 2.0.3
 
 - Marked as deprecated, please install [dafny-lang.ide-vscode](https://marketplace.visualstudio.com/items?itemName=dafny-lang.ide-vscode) 
+
+## 2.0.2
+
+- Improved syntax highlighting of strings
 
 ## 2.0.1
 
