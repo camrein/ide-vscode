@@ -9,4 +9,5 @@ export namespace DafnyCommands {
 export namespace VSCodeCommands {
   export const Open = 'vscode.open';
   export const ConfigureLanguageSettings = 'workbench.action.configureLanguageBasedSettings';
+  export const SearchExtension = 'workbench.extensions.search';
 }

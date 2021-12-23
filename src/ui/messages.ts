@@ -24,7 +24,9 @@ export namespace Messages {
       + 'we decided to move it to the new "dafny-lang" organization. Please switch to the new release to ensure '
       + ' that you receive Dafny updates in the future.';
     export const GetLatest = 'Get latest';
-    export const LatestMarketplace = 'https://marketplace.visualstudio.com/items?itemName=dafny-lang.ide-vscode';
+    export const Website = 'Website';
+    export const MarketplaceWebsite = 'https://marketplace.visualstudio.com/items?itemName=dafny-lang.ide-vscode';
+    export const MarketplaceIdentifier = 'dafny-lang.ide-vscode';
   }
 
   export namespace Dotnet {

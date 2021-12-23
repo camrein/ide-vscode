@@ -31,9 +31,18 @@ export async function deactivate(): Promise<void> {
 }
 
 async function showDeprecationNotice(): Promise<void> {
-  const selection = await window.showInformationMessage(Messages.Installation.DeprecatedMessage, Messages.Installation.GetLatest);
-  if(selection === Messages.Installation.GetLatest) {
-    await commands.executeCommand(VSCodeCommands.Open, Uri.parse(Messages.Installation.LatestMarketplace));
+  const selection = await window.showInformationMessage(
+    Messages.Installation.DeprecatedMessage,
+    Messages.Installation.GetLatest,
+    Messages.Installation.Website
+  );
+  switch(selection) {
+  case Messages.Installation.GetLatest:
+    await commands.executeCommand(VSCodeCommands.SearchExtension, Messages.Installation.MarketplaceIdentifier);
+    break;
+  case Messages.Installation.Website:
+    await commands.executeCommand(VSCodeCommands.Open, Uri.parse(Messages.Installation.MarketplaceWebsite));
+    break;
   }
 }
 
