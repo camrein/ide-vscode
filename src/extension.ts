@@ -1,4 +1,4 @@
-import { Disposable, ExtensionContext, OutputChannel, window } from 'vscode';
+import { commands, Disposable, ExtensionContext, OutputChannel, Uri, window } from 'vscode';
 import { ExtensionConstants, LanguageServerConstants } from './constants';
 
 import { DafnyLanguageClient } from './language/dafnyLanguageClient';
@@ -10,11 +10,13 @@ import { timeout } from './tools/timeout';
 
 // Promise.any() is only available since Node.JS 15.
 import * as PromiseAny from 'promise.any';
+import { VSCodeCommands } from './commands';
 
 const DafnyVersionTimeoutMs = 5_000;
 let extensionRuntime: ExtensionRuntime | undefined;
 
 export async function activate(context: ExtensionContext): Promise<void> {
+  showDeprecationNotice();
   if(!await checkAndInformAboutInstallation()) {
     return;
   }
@@ -26,6 +28,13 @@ export async function activate(context: ExtensionContext): Promise<void> {
 
 export async function deactivate(): Promise<void> {
   await extensionRuntime?.dispose();
+}
+
+async function showDeprecationNotice(): Promise<void> {
+  const selection = await window.showInformationMessage(Messages.Installation.DeprecatedMessage, Messages.Installation.GetLatest);
+  if(selection === Messages.Installation.GetLatest) {
+    await commands.executeCommand(VSCodeCommands.Open, Uri.parse(Messages.Installation.LatestMarketplace));
+  }
 }
 
 class ExtensionRuntime {
